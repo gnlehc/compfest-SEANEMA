@@ -26,7 +26,7 @@ function Home() {
   }, []);
 
   return (
-    <div className="container py-5 flex mx-auto ">
+    <div className="container py-5 flex mx-auto scroll-smooth">
       <div className="flex flex-col">
         <div className="sticky z-10 top-0 border border-black px-12 rounded py-2 bg-neutral-50">
           <Header />
@@ -35,9 +35,8 @@ function Home() {
           <p className="font-bold text-6xl p-12">
             <div className="flex justify-start">
               <div
-                className={`rounded-full blur-3xl w-20 h-20 z-0 bg-gradient-to-r from-red-400 to-red-700 bg-blur-sm transition-opacity duration-1000 ${
-                  isVisible ? "opacity-100" : "opacity-0"
-                } ease-in-out`}
+                className={`rounded-full blur-3xl w-20 h-20 z-0 bg-gradient-to-r from-red-400 to-red-700 bg-blur-sm transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"
+                  } ease-in-out`}
               ></div>{" "}
             </div>
             Experience the{" "}
@@ -51,9 +50,8 @@ function Home() {
             <div className="flex justify-end">
               <div className="flex justify-end absolute">
                 <div
-                  className={`rounded-full blur-3xl w-20 h-20 z-0 bg-gradient-to-r from-red-400 to-red-700 bg-blur-sm transition-opacity duration-1000 ${
-                    isVisible ? "opacity-100" : "opacity-0"
-                  } ease-in-out`}
+                  className={`rounded-full blur-3xl w-20 h-20 z-0 bg-gradient-to-r from-red-400 to-red-700 bg-blur-sm transition-opacity duration-1000 ${isVisible ? "opacity-100" : "opacity-0"
+                    } ease-in-out`}
                 ></div>{" "}
               </div>
             </div>

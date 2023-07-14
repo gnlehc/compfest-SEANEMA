@@ -1,12 +1,15 @@
-import React, { useEffect, useState } from "react";
-import barcode from "../asset/barcode.jpeg";
+import React, { useEffect, useState, useContext } from "react";
+import barcode from "../assets/barcode.jpeg";
+import { BalanceContext } from "../context/BalanceContext";
+
 const TopUp = () => {
-  const [balance, setBalance] = useState(0);
+  const { balance, setBalance } = useContext(BalanceContext);
   const [user, setUser] = useState("");
 
   useEffect(() => {
     const savedBalance = localStorage.getItem("balance");
     const savedUser = localStorage.getItem("email");
+
     if (savedBalance) {
       setBalance(parseInt(savedBalance));
     }
@@ -15,12 +18,29 @@ const TopUp = () => {
     }
   }, []);
 
-  const handleTopUp = (amount) => {
+  // const handleTopUp = (amount) => {
+  //   const newBalance = balance + amount;
+  //   setBalance(newBalance);
+  //   localStorage.setItem("balance", newBalance.toString());
+  //   console.log(newBalance);
+  // };
+  const handleTopUp = async (amount) => {
+    // Perform the top-up process (e.g., API request, payment gateway, etc.)
+    // Assuming the top-up is successful, proceed with updating the balance
+
     const newBalance = balance + amount;
     setBalance(newBalance);
-    localStorage.setItem("balance", newBalance.toString());
-    console.log(newBalance);
+
+    // Save the new balance in the localStorage
+    try {
+      localStorage.setItem("balance", newBalance.toString());
+      console.log("New balance saved:", newBalance);
+    } catch (error) {
+      console.error("Failed to save new balance:", error);
+      // Handle the error gracefully (display an error message, retry, etc.)
+    }
   };
+
 
   const saldo = [
     {
@@ -59,8 +79,8 @@ const TopUp = () => {
               </h1>
             </div>
             <div className="flex flex-row justify-center gap-10">
-              {saldo.map((e, index) => (
-                <div className="flex flex-row items-center gap-4" key={index}>
+              {saldo.map((e) => (
+                <div className="flex flex-row items-center gap-4" key={e.index}>
                   <p className="text-lg font-medium text-black">{e.topup}</p>
                   <button
                     className="px-4 py-2 text-white bg-red-500 rounded-full hover:bg-red-600"

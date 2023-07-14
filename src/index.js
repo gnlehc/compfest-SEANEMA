@@ -5,16 +5,21 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import MovieProvider from "./context/movieContext";
 import BalanceProvider from "./context/BalanceContext";
-
+import { AuthContextProvider } from "./context/AuthContext";
+import { ChakraProvider } from '@chakra-ui/react'
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <BalanceProvider>
-    <MovieProvider>
-      <React.StrictMode>
-        <App />
-      </React.StrictMode>
-    </MovieProvider>
-  </BalanceProvider>
+  <ChakraProvider>
+    <AuthContextProvider>
+      <BalanceProvider>
+        <MovieProvider>
+          <React.StrictMode>
+            <App />
+          </React.StrictMode>
+        </MovieProvider>
+      </BalanceProvider>
+    </AuthContextProvider>
+  </ChakraProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

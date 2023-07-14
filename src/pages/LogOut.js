@@ -1,11 +1,13 @@
 import React, { useContext } from "react";
 import { BalanceContext } from "../context/BalanceContext";
+import { UserAuth } from "../context/AuthContext";
 
 function HomePage() {
-  const logout = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
+  const {user, logOut} = UserAuth()
+  // const logout = () => {
+  //   localStorage.removeItem("userId");
+  //   window.location.reload();
+  // };
 
   const redirect = () => {
     window.location.href = "/TopUp";
@@ -26,7 +28,7 @@ function HomePage() {
         </button>
       </div>
       <button
-        onClick={logout}
+        onClick={logOut}
         className="text-white border bg-gradient-to-r from-red-500 to-red-800 text-lg active:translate-y-1 py-1 px-8 rounded hover:bg-rose-200"
       >
         Logout

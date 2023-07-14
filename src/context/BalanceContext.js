@@ -1,27 +1,54 @@
-// import { createContext, useEffect, useState } from "react";
+// import React, { useEffect, useState, createContext } from "react";
+// import { doc, getDoc, setDoc } from "firebase/firestore";
+// import { database } from "./config";
 
 // export const BalanceContext = createContext();
 
-// const BalanceProvider = ({ children }) => {
-//   const [balance, setBalance] = useState([]);
+// const BalanceProvider = ({ children, user }) => {
+//   const [balance, setBalance] = useState(0);
 //   const rp = 500000;
+//   const userBalanceRef = doc(database, "Users", user?.uid);
+
 //   useEffect(() => {
-//     const initialBalance = () => {
-//       setBalance(rp);
-//       localStorage.setItem('balance', rp.toString())
+//     const fetchBalance = async () => {
+//       try {
+//         const docSnapshot = await getDoc(userBalanceRef);
+//         if (docSnapshot.exists()) {
+//           setBalance(docSnapshot.data().balance);
+//         } else {
+//           setBalance(rp);
+//           await setDoc(userBalanceRef, { balance: rp });
+//         }
+//       } catch (err) {
+//         console.log(err.message);
+//       }
 //     };
-//     initialBalance();
-//     console.log(setBalance);
-//     console.log(balance);
-//   }, []);
+
+//     fetchBalance();
+//   }, [user, userBalanceRef]);
+
+//   const updateBalance = async (newBalance) => {
+//     try {
+//       setBalance(newBalance);
+//       await setDoc(userBalanceRef, { balance: newBalance });
+//     } catch (err) {
+//       console.log(err.message);
+//     }
+//   };
+
+//   if (!user) {
+//     return null; // or any loading state if necessary
+//   }
+
 //   return (
-//     <BalanceContext.Provider value={{ balance }}>
+//     <BalanceContext.Provider value={{ balance, updateBalance }}>
 //       {children}
 //     </BalanceContext.Provider>
 //   );
 // };
 
 // export default BalanceProvider;
+
 import React, { useEffect, useState, createContext } from "react";
 
 export const BalanceContext = createContext();

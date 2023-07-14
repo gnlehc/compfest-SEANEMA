@@ -9,7 +9,7 @@ const MovieProvider = ({children}) => {
             const response = await fetch('https://seleksi-sea-2023.vercel.app/api/movies')
             const res = await response.json();
             setMovie(res)
-            console.log(res)
+            // console.log(res)
         }
         fetchMovie();
     }, [])

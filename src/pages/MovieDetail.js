@@ -19,7 +19,7 @@ const MovieDetail = () => {
   function seats(){
     window.location.href = "/Book"
   }
-  console.log(detail);
+  // console.log(detail);
   return (
     <div
       className="bg-contain bg-center w-screen h-screen bg-gradient-to-tr flex flex-row justify-center gap-24"
@@ -49,7 +49,7 @@ const MovieDetail = () => {
           </p>
           <div className="flex flex-col">
             <div className="border border-white rounded-full w-[120px] bg-white flex justify-center">
-              <p className="text-green-400 text-justify font-bold">
+              <p className="text-red-400 text-justify font-bold">
                 Rp. {ticket_price}
               </p>
             </div>
