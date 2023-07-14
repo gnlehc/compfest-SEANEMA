@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import { Link } from "react-router-dom";
 
 import { Swiper, SwiperSlide } from "swiper/react";
+import AuthContext from "../context/AuthContext";
 function Home() {
   const { movie } = useContext(MovieContext);
   const filterProd = movie.filter((item) => {

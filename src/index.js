@@ -10,15 +10,15 @@ import { ChakraProvider } from '@chakra-ui/react'
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <ChakraProvider>
-    <AuthContextProvider>
-      <BalanceProvider>
+    <BalanceProvider>
+      <AuthContextProvider>
         <MovieProvider>
           <React.StrictMode>
             <App />
           </React.StrictMode>
         </MovieProvider>
-      </BalanceProvider>
-    </AuthContextProvider>
+      </AuthContextProvider>
+    </BalanceProvider>
   </ChakraProvider>
 );
 

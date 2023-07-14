@@ -1,23 +1,23 @@
 import React, { useContext, useState } from "react";
 import { database } from "./config";
-import { addDoc, collection, doc, setDoc } from "firebase/firestore";
+import { addDoc, collection } from "firebase/firestore";
 import { BalanceContext } from "../context/BalanceContext";
 
 const Register = () => {
     const { balance } = useContext(BalanceContext);
     const [data, setData] = useState([]);
-    const collectionRef = firebase.firestore().collection(database, "Users");
+    const collectionRef = collection(database, "Users");
     const handleInput = (e) => {
         let newInput = { [e.target.name]: e.target.value };
         setData({ ...data, ...newInput });
     };
     const handleSubmit = () => {
-        setDoc(doc(collectionRef, {
+        addDoc(collectionRef, {
             Email: data.Email,
             Password: data.Password,
-            TLP: data.TelephoneNumber,
-            Balance: balance,
-        }))
+            // TLP: data.TelephoneNumber,
+            // Balance: balance,
+        })
             .then(() => {
                 alert("data added");
             })

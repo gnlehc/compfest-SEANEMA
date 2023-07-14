@@ -3,7 +3,8 @@ import cinema from "../assets/Login.jpg";
 import { Link, Navigate } from "react-router-dom";
 import SignIn from "../components/SignIn";
 import { UserAuth } from "../context/AuthContext";
-import {Alert, AlertIcon, CloseButton } from '@chakra-ui/react';
+import { Alert, AlertIcon, CloseButton } from '@chakra-ui/react';
+import { GoogleLogin } from 'react-google-login'
 const Login = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -26,15 +27,19 @@ const Login = () => {
             console.log(e.message)
         }
     }
+    const handleGoogle = () => {
+        window.location.href = '/'
+    }
+
     return (
         <>
             <div className="w-full h-screen">
                 <img
                     src={cinema}
                     className="hidden sm:block absolute w-full h-full object-cover"></img>
-                <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
+                <div className="bg-black/60 fixed top-0 left-0 w-full h-full"></div>
                 <div className="fixed w-full px-4 py-24 z-50">
-                    <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
+                    <div className="max-w-[450px] h-[560px] mx-auto bg-black/75 text-white">
                         <div className="max-w-[320px] mx-auto py-16">
                             <h1 className="text-3xl font-bold">Sign In</h1>
                             <form onSubmit={handleSubmit} className="w-full- flex flex-col py-4">
@@ -69,10 +74,14 @@ const Login = () => {
                                     </span>{" "}
                                     <Link className="text-red-600" to="/Register">Sign Up</Link>
                                 </p>
+                                <div className="mx-auto">
+                                    <SignIn />
+                                </div>
                             </form>
-                            <div>
-                                <SignIn />
-                            </div>
+                            {/* <GoogleLogin clientId="1060515001003-lhh7a6kp5lre8guk146n61l4h8t562do.apps.googleusercontent.com"
+                                buttonText="Sign in with Google"
+                                onSuccess={handleGoogle}
+                            ></GoogleLogin> */}
                             {showAlert && (
                                 <div className="fixed bottom-4 right-4 max-w-[336px] z-50 text-black">
                                     <Alert status="error" rounded="md">

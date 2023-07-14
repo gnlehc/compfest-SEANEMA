@@ -1,13 +1,22 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
-import { auth } from '../components/config'
+import { auth, database } from '../components/config'
 import { createUserWithEmailAndPassword, onAuthStateChanged, signInWithEmailAndPassword, signOut } from 'firebase/auth';
+import { setDoc, doc } from 'firebase/firestore';
+import { BalanceContext } from './BalanceContext';
 const AuthContext = createContext()
 
 export function AuthContextProvider({ children }) {
     const [user, setUser] = useState({});
-
+    const { balance } = useContext(BalanceContext)
     function signUp(email, password) {
-        return createUserWithEmailAndPassword(auth, email, password)
+        createUserWithEmailAndPassword(auth, email, password)
+        return setDoc(doc(database, "Users", email), {
+            email: email,
+            password: password,
+            balance: balance,
+            trHistory: []
+        })
+
     }
 
     function logIn(email, password) {

@@ -4,10 +4,11 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import MovieDetail from "./pages/MovieDetail";
 import TopUp from "./pages/TopUp";
 import Children from "./pages/Children";
-import SeatSelector from "./pages/Seat";
 import Register from "./components/Register";
 import SignUp from "./pages/SignUp";
 import Login from "./pages/Login";
+import Middleware from "./components/middleware";
+import Seat from "./pages/Seat";
 
 function App() {
   return (
@@ -16,11 +17,11 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/Movie/:id" element={<MovieDetail />} />
-          <Route path="/TopUp" element={<TopUp />} />
+          <Route path="/TopUp" element={<Middleware><TopUp /></Middleware>} />
           <Route path="/Children" element={<Children />} />
-          <Route path="/Book" element={<SeatSelector />} />
           <Route path="/Register" element={<SignUp />} />
           <Route path="/Login" element={<Login />} />
+          <Route path="/Book" element={<Seat />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -34,7 +34,7 @@ const SignUp = () => {
                     className="hidden sm:block absolute w-full h-full object-cover"></img>
                 <div className="bg-black/60 fixed top-0 left-0 w-full h-screen"></div>
                 <div className="fixed w-full px-4 py-24 z-50">
-                    <div className="max-w-[450px] h-[600px] mx-auto bg-black/75 text-white">
+                    <div className="max-w-[450px] h-[560px] mx-auto bg-black/75 text-white">
                         <div className="max-w-[320px] mx-auto py-16">
                             <h1 className="text-3xl font-bold">Sign Up</h1>
                             <form onSubmit={handleSubmit} className="w-full- flex flex-col py-4">
@@ -69,10 +69,11 @@ const SignUp = () => {
                                     </span>{" "}
                                     <Link to="/Login" className="text-red-600">Sign In</Link>
                                 </p>
+                                <div className="mx-auto">
+                                    <SignIn />
+                                </div>
                             </form>
-                            <div>
-                                <SignIn />
-                            </div>
+
                             {showAlert && (
                                 <div className="fixed bottom-4 right-4 max-w-[336px] z-50 text-black">
                                     <Alert status="error" rounded="md">
