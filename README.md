@@ -1,4 +1,4 @@
-SEANEMA Software engineer academy at University of Indonesia
+*SEANEMA Software engineer academy at University of Indonesia*
 
 Software engineering academy Hosted by University of Indonesia. The academy aims to develop skilled software engineers by providing practical, industry-focused training. As part of a project, we are tasked with creating a cinema booking website that offers users the convenience of selecting user preferred seats and completing their payments online.
 
